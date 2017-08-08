@@ -43,7 +43,7 @@ vim ~/.bashrc
 
 To start with, let's replace the default bash prompt with something really simple like this:
 
-![](img/prompt_min.png)
+![](img/prompt_dollar.png)
 
 To achieve this, type the following into your `.bashrc`:
 
@@ -69,6 +69,8 @@ Start by adding the time to our simple `$` prompt:
 PS1='\T \$'
 ```
 
+![](img/prompt_time.png)
+
 Note the space between `\T` and `\$`. Adding spaces between variables can help everything to look neater.
 
 Read through the list of available variables and add a few to your own prompt. 
@@ -81,6 +83,8 @@ To change the colours parts of the bash prompt, wrap the variable in ANSI escape
 PS1='\[\e[31m\]\w\[\e[m\] \T \$'
 ```
 
+![](img/prompt_col_simple.png)
+
 This makes the directory path appear in red text. `31m` is the section of that sequence that actually defines the colour red. 
 
 ANSI escape sequences can also be used to change the background colour of the text, add underlines, make the text bold, or high contrast. I often refer to both [this wikipedia page on ANSI colour codes](http://en.wikipedia.org/wiki/ANSI_escape_code#colors) and [this blog post on jafrog.com](http://www.jafrog.com/2013/11/23/colors-in-terminal) when choosing colour codes.
@@ -90,6 +94,8 @@ A more elaborate example which makes the current directory light-cyan coloured, 
 ```
 PS1='\[\e[96;1m\]\w\[\e[m\] \T \$'
 ```
+
+![](img/prompt_col_complex.png)
 
 The `;1` is the part which makes the text bold. Note how `[\e[m\]` always needs to be placed at the end of the coloured part of the bash prompt, to return the colours to normal.
 
@@ -103,8 +109,10 @@ Another way escape sequences can be used is to add unicode characters to the pro
 Browse through the wikipedia page and pick your chosen character, then note down its code, e.g. `u2602` for th umbrella symol. The syntax for adding this to your bash prompt is as follows:
 
 ```
-PS1='$'\u2602''
+PS1=$'\u2602'
 ```
+
+![](img/prompt_umbrella.png)
 
 Note how the `$` isn't escaped this time, as we don't actually want to see the `$` in our prompt
 
@@ -112,8 +120,10 @@ Note how the `$` isn't escaped this time, as we don't actually want to see the `
 Brackets, spaces, hyphens, colons can all be used to great effect in your bash prompt to help separate the different parts. As an example, try setting this in your `.bashrc` and `source ~/.bashrc` to see the results:
 
 ```
-PS1=[\T] {\u:\h} -- \w
+PS1='[\T] {\u:\h} -- \w'
 ```
+
+![](img/prompt_formatting.png)
 
 ### Building PS1 incrementally
 After a while, if your bash prompt becomes long and complicated, your PS1 code may start to look busy and hard to read, but it's easy to restructure the PS1 code to increase readability. In the example below, a long and complicated prompt is rewritten so each part is on a separate line and spaces are given their own lines to make them easier to see. Additionally, this allows each part to have its own comment, further increasing readability:
@@ -135,6 +145,8 @@ PS1+='\$'	# $
 PS1+=' '	# Space
 ```
 
+![](img/prompt_multiline.png)
+
 ### Conditional statements and functions
 
 __From here onwards I am writing about stuff I don't fully understand and have just gathered from other websites and tutorials.__ 
@@ -153,17 +165,21 @@ function __stat() {
 PS1='$(__stat)'
 ```
 
+![](img/prompt_tick.png)
+
 Note the `__stat`. As far as I know the `__` aren't necessary, the function could just be called `stat`, but it seems to be a common convention in bash prompt functions.
 
 ### Sourcing external scripts
 
-I use the [`git-prompt.sh` shell script](http://www.github.com/git/git/tree/master/contrib/completion/git-prompt.sh), which is part of the contributed materials in the git github repo, to get the current git branch displayed in my bash prompt. Download and save the script as `~/.git-prompt.sh`. Then add the following to your `.bashrc`:
+I use the [`git-prompt.sh` shell script](http://www.github.com/git/git/tree/master/contrib/completion/git-prompt.sh), which is part of the contributed materials in the git github repo, to get the current git branch displayed in my bash prompt. Download and save the script in the link as  `~/.git-prompt.sh`. Then add the following to your `.bashrc`:
 
 ```
 source ~/.git-prompt.sh
 
-PS1='$(__git_ps1 "[%s]")
+PS1='$(__git_ps1 "[%s]")'
 ```
+
+![](img/prompt_git.png)
 
 `git-prompt.sh` also has some variables which can be set from within `.bashrc`. Details can be found by reading the preamble of the script in a text editor.
 
