@@ -4,10 +4,11 @@ This is what my bash prompt looks like at the moment:
 
 ![](img/prompt_current_crop.png)
 
-and here is what the various parts refer to:
+Here is what the various parts refer to:
 
 ![](img/prompt_current_annot_crop.png)
 
+[And here is a link to my `.bashrc`,](files/.bashrc) which has the code to make this prompt.
 
 ## What is a bash prompt?
 
