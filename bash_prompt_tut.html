@@ -12,19 +12,19 @@
 <h1 id="constructing-a-useful-bash-prompt">Constructing a Useful Bash Prompt</h1>
 <p>This is what my bash prompt looks like at the moment:</p>
 <div class="figure">
-<img src="img/prompt_current.png" />
+<img src="img/prompt_current_crop.png" />
 
 </div>
 <p>and here is what the various parts refer to:</p>
 <div class="figure">
-<img src="img/prompt_current_annot.png" />
+<img src="img/prompt_current_annot_crop.png" />
 
 </div>
 <h2 id="what-is-a-bash-prompt">What is a bash prompt?</h2>
 <p>The bash prompt is a piece of text placed at start of a command line interface using the bash shell. The primary function of the prompt is to let the user know that the computer is ready for the next command, the secondary function is to provide the user with some information about the status of the current session.</p>
 <p>The default bash prompt looks like this:</p>
 <div class="figure">
-<img src="img/prompt_default.png" />
+<img src="img/prompt_default_crop.png" />
 
 </div>
 <p>so fire up your terminal of choice and see that your bash prompt looks similar. The default prompt shows the currently logged in username, the hostname (i.e. the name of th computer), the current directory path relative to <code>~</code> and finally a <code>$</code>, which marks the end of the prompt and the start of the area that you can type commands.</p>
@@ -38,7 +38,7 @@
 <h3 id="super-basic">Super basic</h3>
 <p>To start with, let's replace the default bash prompt with something really simple like this:</p>
 <div class="figure">
-<img src="img/prompt_dollar.png" />
+<img src="img/prompt_dollar_crop.png" />
 
 </div>
 <p>To achieve this, type the following into your <code>.bashrc</code>:</p>
@@ -51,7 +51,7 @@
 <p>Start by adding the time to our simple <code>$</code> prompt:</p>
 <pre><code>PS1=&#39;\T \$&#39;</code></pre>
 <div class="figure">
-<img src="img/prompt_time.png" />
+<img src="img/prompt_time_crop.png" />
 
 </div>
 <p>Note the space between <code>\T</code> and <code>\$</code>. Adding spaces between variables can help everything to look neater.</p>
@@ -60,7 +60,7 @@
 <p>To change the colours parts of the bash prompt, wrap the variable in ANSI escape sequences, like so:</p>
 <pre><code>PS1=&#39;\[\e[31m\]\w\[\e[m\] \T \$&#39;</code></pre>
 <div class="figure">
-<img src="img/prompt_col_simple.png" />
+<img src="img/prompt_col_simple_crop.png" />
 
 </div>
 <p>This makes the directory path appear in red text. <code>31m</code> is the section of that sequence that actually defines the colour red.</p>
@@ -68,7 +68,7 @@
 <p>A more elaborate example which makes the current directory light-cyan coloured, with bold font:</p>
 <pre><code>PS1=&#39;\[\e[96;1m\]\w\[\e[m\] \T \$&#39;</code></pre>
 <div class="figure">
-<img src="img/prompt_col_complex.png" />
+<img src="img/prompt_col_complex_crop.png" />
 
 </div>
 <p>The <code>;1</code> is the part which makes the text bold. Note how <code>[\e[m\]</code> always needs to be placed at the end of the coloured part of the bash prompt, to return the colours to normal.</p>
@@ -79,7 +79,7 @@
 <p>Browse through the wikipedia page and pick your chosen character, then note down its code, e.g. <code>u2602</code> for th umbrella symol. The syntax for adding this to your bash prompt is as follows:</p>
 <pre><code>PS1=$&#39;\u2602&#39;</code></pre>
 <div class="figure">
-<img src="img/prompt_umbrella.png" />
+<img src="img/prompt_umbrella_crop.png" />
 
 </div>
 <p>Note how the <code>$</code> isn't escaped this time, as we don't actually want to see the <code>$</code> in our prompt</p>
@@ -87,7 +87,7 @@
 <p>Brackets, spaces, hyphens, colons can all be used to great effect in your bash prompt to help separate the different parts. As an example, try setting this in your <code>.bashrc</code> and <code>source ~/.bashrc</code> to see the results:</p>
 <pre><code>PS1=&#39;[\T] {\u:\h} -- \w&#39;</code></pre>
 <div class="figure">
-<img src="img/prompt_formatting.png" />
+<img src="img/prompt_formatting_crop.png" />
 
 </div>
 <h3 id="building-ps1-incrementally">Building PS1 incrementally</h3>
@@ -107,7 +107,7 @@ PS1+=$&#39;\u2517&#39;  # Elbow
 PS1+=&#39;\$&#39;   # $
 PS1+=&#39; &#39;    # Space</code></pre>
 <div class="figure">
-<img src="img/prompt_multiline.png" />
+<img src="img/prompt_multiline_crop.png" />
 
 </div>
 <h3 id="conditional-statements-and-functions">Conditional statements and functions</h3>
@@ -123,17 +123,17 @@ PS1+=&#39; &#39;    # Space</code></pre>
 
 PS1=&#39;$(__stat)&#39;</code></pre>
 <div class="figure">
-<img src="img/prompt_tick.png" />
+<img src="img/prompt_tick_crop.png" />
 
 </div>
 <p>Note the <code>__stat</code>. As far as I know the <code>__</code> aren't necessary, the function could just be called <code>stat</code>, but it seems to be a common convention in bash prompt functions.</p>
 <h3 id="sourcing-external-scripts">Sourcing external scripts</h3>
-<p>I use the <a href="http://www.github.com/git/git/tree/master/contrib/completion/git-prompt.sh"><code>git-prompt.sh</code> shell script</a>, which is part of the contributed materials in the git github repo, to get the current git branch displayed in my bash prompt. Download and save the script as <code>~/.git-prompt.sh</code>. Then add the following to your <code>.bashrc</code>:</p>
+<p>I use the <a href="http://www.github.com/git/git/tree/master/contrib/completion/git-prompt.sh"><code>git-prompt.sh</code> shell script</a>, which is part of the contributed materials in the git github repo, to get the current git branch displayed in my bash prompt. Download and save the script in the link as <code>~/.git-prompt.sh</code>. Then add the following to your <code>.bashrc</code>:</p>
 <pre><code>source ~/.git-prompt.sh
 
 PS1=&#39;$(__git_ps1 &quot;[%s]&quot;)&#39;</code></pre>
 <div class="figure">
-<img src="img/prompt_git.png" />
+<img src="img/prompt_git_crop.png" />
 
 </div>
 <p><code>git-prompt.sh</code> also has some variables which can be set from within <code>.bashrc</code>. Details can be found by reading the preamble of the script in a text editor.</p>

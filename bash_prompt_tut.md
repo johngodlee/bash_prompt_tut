@@ -2,11 +2,11 @@
 
 This is what my bash prompt looks like at the moment:
 
-![](img/prompt_current.png)
+![](img/prompt_current_crop.png)
 
 and here is what the various parts refer to:
 
-![](img/prompt_current_annot.png)
+![](img/prompt_current_annot_crop.png)
 
 
 ## What is a bash prompt?
@@ -15,7 +15,7 @@ The bash prompt is a piece of text placed at start of a command line interface u
 
 The default bash prompt looks like this:
 
-![](img/prompt_default.png)
+![](img/prompt_default_crop.png)
 
 so fire up your terminal of choice and see that your bash prompt looks similar. The default prompt shows the currently logged in username, the hostname (i.e. the name of th computer), the current directory path relative to `~` and finally a `$`, which marks the end of the prompt and the start of the area that you can type commands.
 
@@ -43,7 +43,7 @@ vim ~/.bashrc
 
 To start with, let's replace the default bash prompt with something really simple like this:
 
-![](img/prompt_dollar.png)
+![](img/prompt_dollar_crop.png)
 
 To achieve this, type the following into your `.bashrc`:
 
@@ -69,7 +69,7 @@ Start by adding the time to our simple `$` prompt:
 PS1='\T \$'
 ```
 
-![](img/prompt_time.png)
+![](img/prompt_time_crop.png)
 
 Note the space between `\T` and `\$`. Adding spaces between variables can help everything to look neater.
 
@@ -83,7 +83,7 @@ To change the colours parts of the bash prompt, wrap the variable in ANSI escape
 PS1='\[\e[31m\]\w\[\e[m\] \T \$'
 ```
 
-![](img/prompt_col_simple.png)
+![](img/prompt_col_simple_crop.png)
 
 This makes the directory path appear in red text. `31m` is the section of that sequence that actually defines the colour red. 
 
@@ -95,7 +95,7 @@ A more elaborate example which makes the current directory light-cyan coloured, 
 PS1='\[\e[96;1m\]\w\[\e[m\] \T \$'
 ```
 
-![](img/prompt_col_complex.png)
+![](img/prompt_col_complex_crop.png)
 
 The `;1` is the part which makes the text bold. Note how `[\e[m\]` always needs to be placed at the end of the coloured part of the bash prompt, to return the colours to normal.
 
@@ -112,7 +112,7 @@ Browse through the wikipedia page and pick your chosen character, then note down
 PS1=$'\u2602'
 ```
 
-![](img/prompt_umbrella.png)
+![](img/prompt_umbrella_crop.png)
 
 Note how the `$` isn't escaped this time, as we don't actually want to see the `$` in our prompt
 
@@ -123,7 +123,7 @@ Brackets, spaces, hyphens, colons can all be used to great effect in your bash p
 PS1='[\T] {\u:\h} -- \w'
 ```
 
-![](img/prompt_formatting.png)
+![](img/prompt_formatting_crop.png)
 
 ### Building PS1 incrementally
 After a while, if your bash prompt becomes long and complicated, your PS1 code may start to look busy and hard to read, but it's easy to restructure the PS1 code to increase readability. In the example below, a long and complicated prompt is rewritten so each part is on a separate line and spaces are given their own lines to make them easier to see. Additionally, this allows each part to have its own comment, further increasing readability:
@@ -145,7 +145,7 @@ PS1+='\$'	# $
 PS1+=' '	# Space
 ```
 
-![](img/prompt_multiline.png)
+![](img/prompt_multiline_crop.png)
 
 ### Conditional statements and functions
 
@@ -165,7 +165,7 @@ function __stat() {
 PS1='$(__stat)'
 ```
 
-![](img/prompt_tick.png)
+![](img/prompt_tick_crop.png)
 
 Note the `__stat`. As far as I know the `__` aren't necessary, the function could just be called `stat`, but it seems to be a common convention in bash prompt functions.
 
@@ -179,7 +179,7 @@ source ~/.git-prompt.sh
 PS1='$(__git_ps1 "[%s]")'
 ```
 
-![](img/prompt_git.png)
+![](img/prompt_git_crop.png)
 
 `git-prompt.sh` also has some variables which can be set from within `.bashrc`. Details can be found by reading the preamble of the script in a text editor.
 
