@@ -184,4 +184,4 @@ PS1='$(__git_ps1 "[%s]")'
 
 `git-prompt.sh` also has some variables which can be set from within `.bashrc`. Details can be found by reading the preamble of the script in a text editor.
 
-__Now that you've read through the tutorial, try to construct your own bash prompt, adding the bits that you find useful.__
+__Now that you've read through the tutorial, try to construct your own bash prompt, adding the bits that you find useful. Refer back to the [linked `.bashrc`](for some inspiration).__
